@@ -1,8 +1,8 @@
 #!/bin/bash
 REPLACE="__REMOTE"
-if [ ${#} -nq 0 ] ; then
-    _args= "${@}"
-    git remote | xargs -I{} sh -c "git $(echo ¥"${_args}¥" | sed -e 's/${REPLACE}/{}/g')"
+if [ ${#} -ne 0 ] ; then
+    _args="${@}"
+    git remote | xargs -I{} sh -c "git `echo "${_args}" | sed -e "s/${REPLACE}/{}/g"`"
 else
     echo "input error"
 fi
